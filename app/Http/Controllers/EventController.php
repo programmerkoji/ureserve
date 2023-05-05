@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreEventRequest;
 use App\Http\Requests\UpdateEventRequest;
-use App\Http\Services\EventService;
+use App\Services\EventService;
 use App\Models\Event;
 use Illuminate\Support\Facades\DB;
 use Carbon\Carbon;
@@ -81,7 +81,11 @@ class EventController extends Controller
      */
     public function show(Event $event)
     {
-        //
+        $event = Event::findOrFail($event->id);
+        $eventDate = $event->eventDate;
+        $startTime = $event->startTime;
+        $endTime = $event->endTime;
+        return view('manager.events.show', compact('event', 'eventDate', 'startTime', 'endTime'));
     }
 
     /**
