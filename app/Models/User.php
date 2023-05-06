@@ -30,6 +30,12 @@ class User extends Authenticatable
         'role',
     ];
 
+    public function events()
+    {
+        return $this->belongsToMany(Event::class, 'reservations')
+            ->withPivot('id', 'number_of_people', 'canceled_date');
+    }
+
     /**
      * The attributes that should be hidden for serialization.
      *
