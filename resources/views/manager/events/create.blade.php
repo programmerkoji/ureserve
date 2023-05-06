@@ -48,7 +48,7 @@
                                 <x-jet-label for="max_people" value="定員数" />
                                 <x-jet-input id="max_people" class="block mt-1 w-full" type="number" name="max_people" required />
                             </div>
-                            <div class="flex space-x-4 justify-around">
+                            <div class="flex space-x-4 justify-around gap-8">
                                 <input type="radio" name="is_visible" value="1" checked />表示
                                 <input type="radio" name="is_visible" value="0" />非表示
                                 <x-jet-button class="ml-4">
