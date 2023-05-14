@@ -49,18 +49,24 @@
                                 {{ $event->max_people }}
                             </div>
                             <div class="mt-4">
-                                <x-jet-label for="reserved_people" value="予約人数" />
-                                <select name="reserved_people">
-                                    @for ($i = 1; $i <= $reservablePeople; $i++)
+                                @if ($reservablePeople <= 0)
+                                    <span class="text-red-500 text-xs">このイベントは満員です。</span>
+                                @else
+                                    <x-jet-label for="reserved_people" value="予約人数" />
+                                    <select name="reserved_people">
+                                        @for ($i = 1; $i <= $reservablePeople; $i++)
                                         <option value="{{$i}}">{{$i}}</option>
-                                    @endfor
-                                </select>
+                                        @endfor
+                                    </select>
+                                @endif
                             </div>
                             <div class="flex space-x-4 justify-around gap-8">
                                 <input type="hidden" name="id" value="{{ $event->id }}">
+                                @if ($reservablePeople)
                                 <x-jet-button class="ml-4">
                                     予約する
                                 </x-jet-button>
+                                @endif
                             </div>
                         </div>
                     </form>
