@@ -61,11 +61,15 @@
                                 @endif
                             </div>
                             <div class="flex space-x-4 justify-around gap-8">
-                                <input type="hidden" name="id" value="{{ $event->id }}">
-                                @if ($reservablePeople)
-                                <x-jet-button class="ml-4">
-                                    予約する
-                                </x-jet-button>
+                                @if ($isReserved === null)
+                                    <input type="hidden" name="id" value="{{ $event->id }}">
+                                    @if ($reservablePeople)
+                                    <x-jet-button class="ml-4">
+                                        予約する
+                                    </x-jet-button>
+                                    @endif
+                                @else
+                                    <span class="text-xs">このイベントはすでに予約済みです。</span>
                                 @endif
                             </div>
                         </div>
