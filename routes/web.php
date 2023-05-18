@@ -49,6 +49,9 @@ Route::middleware('can:user-higher')
         Route::post('/{id}', [ReservationController::class, 'reserve'])->name('events.reserve');
     });
 
+    Route::middleware('auth')->get('/{id}', [ReservationController::class, 'detail'])->name('events.detail');
+
+
 Route::controller(LovewireTestController::class)
     ->prefix('livewire-test')->name('livewire-test.')->group(function () {
         Route::get('index', 'index')->name('index');
